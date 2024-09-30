@@ -60,7 +60,7 @@ namespace MTTKDotNetCore.ConsoleApp
             //    //Console.WriteLine(dr["DeleteFlag"]);
             //}
         }
-
+    
         public void Create()
         {
             Console.WriteLine("Blog Title :");
