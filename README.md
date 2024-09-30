@@ -53,6 +53,7 @@ delete from Tbl_Blog where BlogId = 1
 -- Staff Apple 2, Orange 1
 -- 3000, 2000, 1000
 
+
 oracle
 
 select * from tbl_blog with (nolock)
