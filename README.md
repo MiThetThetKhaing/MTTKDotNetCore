@@ -52,6 +52,7 @@ delete from Tbl_Blog where BlogId = 1
 -- Product Apple 1000, Orange 1000
 -- Staff Apple 2, Orange 1
 -- 3000, 2000, 1000
+
 oracle
 
 select * from tbl_blog with (nolock)
@@ -62,9 +63,17 @@ insert into commit
 
 update tbl_blog commit
 
-1 - mg mg 1 2 - mg mg 2 3 - mg mg 3 4 - mg mg 4 5 - mg mg 5
+1 - mg mg 1 
+2 - mg mg 2 
+3 - mg mg 3 
+4 - mg mg 4 
+5 - mg mg 5
 
-1 - mg mg 1 2 - mg mg 2 3 - mg mg 6 4 - mg mg 4 5 - mg mg 5
+1 - mg mg 1 
+2 - mg mg 2 
+3 - mg mg 6 
+4 - mg mg 4 
+5 - mg mg 5
 
 efcore database first (manual, auto) / code first
 
