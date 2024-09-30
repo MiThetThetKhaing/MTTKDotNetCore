@@ -7,9 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.ConsoleApp",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.Database", "MTTKDotNetCore.Database\MTTKDotNetCore.Database.csproj", "{4AF03466-6C35-4C42-B9C6-9540E4274AFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTTKDotNetCore.ConsoleApp2", "MTTKDotNetCore.ConsoleApp2\MTTKDotNetCore.ConsoleApp2.csproj", "{59D99AEF-BE1E-42ED-A5A3-8282423BB140}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.ConsoleApp2", "MTTKDotNetCore.ConsoleApp2\MTTKDotNetCore.ConsoleApp2.csproj", "{59D99AEF-BE1E-42ED-A5A3-8282423BB140}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTTKDotNetCore.RestApi", "MTTKDotNetCore.RestApi\MTTKDotNetCore.RestApi.csproj", "{4A8F4E43-3136-405B-95EC-A565DB2604F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.RestApi", "MTTKDotNetCore.RestApi\MTTKDotNetCore.RestApi.csproj", "{4A8F4E43-3136-405B-95EC-A565DB2604F8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{59F0D92D-5D3E-4E07-BB0E-E136496B7F54}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
