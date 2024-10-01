@@ -108,7 +108,7 @@ namespace MTTKDotNetCore.ConsoleApp
 
             db.Entry(item).State = EntityState.Modified; // This will deleteFlag = 1
 
-            //db.Entry(item).State = EntityState.Deleted; // This will delete
+            //db.Entry(item).State = EntityState.Deleted; // This will completely delete
             var result = db.SaveChanges();
 
             Console.WriteLine(result == 1 ? "Successfully Deleted.." : "Deleting failed..");
