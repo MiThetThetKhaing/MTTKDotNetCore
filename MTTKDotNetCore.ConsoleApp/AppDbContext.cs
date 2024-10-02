@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MTTKDotNetCore.ConsoleApp
 {
-    internal class AppDbContext : DbContext
+    public class AppDbContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
