@@ -19,7 +19,7 @@ namespace MTTKDotNetCore.ConsoleApp.Models
     [Table("Tbl_Blog")]
     public class BlogDataModel
     {
-        [Key]
+        [Key]           // if there is no key this will make error because efcore use not only to store data but also need to know database's table structure
         [Column("BlogId")]
         public int BlogId { get; set; }
 
