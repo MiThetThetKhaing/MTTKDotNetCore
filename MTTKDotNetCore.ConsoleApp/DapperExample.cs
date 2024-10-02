@@ -30,7 +30,7 @@ namespace MTTKDotNetCore.ConsoleApp
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
                 string query = "select * from tbl_Blog where DeleteFlag = 0;";
-                var lst = db.Query<BlogDataModel>(query).ToList();
+                var lst = db.Query<BlogDapperDataModel>(query).ToList();
                 foreach (var item in lst)
                 {
                     Console.WriteLine(item.BlogId);
@@ -72,7 +72,7 @@ namespace MTTKDotNetCore.ConsoleApp
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
                 string query = "select * from tbl_Blog where DeleteFlag = 0 and BlogId = @BlogId;";
-                var item = db.Query<BlogDataModel>(query, new BlogDataModel
+                var item = db.Query<BlogDapperDataModel>(query, new BlogDapperDataModel
                 {
                     BlogId = id
                 }).FirstOrDefault();
