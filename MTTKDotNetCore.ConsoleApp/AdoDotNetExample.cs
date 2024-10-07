@@ -182,7 +182,7 @@ namespace MTTKDotNetCore.ConsoleApp
 
             connection.Close();
 
-            Console.WriteLine(result == 1 ? "Saving successful.." : "Saving failed..");
+            Console.WriteLine(result == 1 ? "Updating successfully.." : "Updating failed..");
 
         }
 

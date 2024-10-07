@@ -4,6 +4,7 @@ using Microsoft.Data.SqlClient;
 using MTTKDotNetCore.Database.Models;
 using MTTKDotNetCore.RestApi.ViewModels;
 using System.Collections.Generic;
+using System.Data;
 
 namespace MTTKDotNetCore.RestApi.Controllers
 {
@@ -71,7 +72,7 @@ namespace MTTKDotNetCore.RestApi.Controllers
                           ,[BlogAuthor]
                           ,[BlogContent]
                           ,[DeleteFlag]
-                      FROM [dbo].[Tbl_Blog] where BlogId=@BlogId and DeleteFlag = 0";
+                      FROM [dbo].[Tbl_Blog] where BlogId = @BlogId and DeleteFlag = 0";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@BlogId", id);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -99,24 +100,11 @@ namespace MTTKDotNetCore.RestApi.Controllers
         [HttpPost]
         public IActionResult CreateBlogs(BlogViewModel blog)
         {
-            //BlogViewModel model = new BlogViewModel();
-
-            //Console.WriteLine("Blog Title :");
-            //string title = Console.ReadLine();
-
-            //Console.WriteLine("Blog Author :");
-            //string author = Console.ReadLine();
-
-            //Console.WriteLine("Blog Content :");
-            //string content = Console.ReadLine();
-            //string title = model.Title;
-            //string author = model.Author;
-            //string content = model.Content;
 
             SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
-            string queryInsert = $@"INSERT INTO [dbo].[Tbl_Blog]
+            string queryInsert = @"INSERT INTO [dbo].[Tbl_Blog]
                                    ([BlogTitle]
                                    ,[BlogAuthor]
                                    ,[BlogContent]
@@ -136,27 +124,106 @@ namespace MTTKDotNetCore.RestApi.Controllers
 
             connection.Close();
 
-            Console.WriteLine(result == 1 ? "Saving successful.." : "Saving failed..");
+            //Console.WriteLine(result == 1 ? "Saving successful.." : "Saving failed..");
 
-            return Ok(blog);
+            return Ok(result == 1 ? "Saving successful.." : "Saving failed..");
         }
 
-        //[HttpPut("{id}")]
-        //public IActionResult UpdateBlogs(int id, TblBlog blog)
-        //{
+        [HttpPut("{id}")]
+        public IActionResult UpdateBlogs(int id, BlogViewModel blog)
+        {
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
 
-        //}
+            string queryInsert = @"UPDATE [dbo].[Tbl_Blog]
+                           SET [BlogTitle] = @BlogTitle
+                              ,[BlogAuthor] = @BlogAuthor
+                              ,[BlogContent] = @BlogContent
+                              ,[DeleteFlag] = 0
+                         WHERE BlogId = @BlogId";
 
-        //[HttpPatch("{id}")]
-        //public IActionResult PatchBlog(int id, TblBlog blog)
-        //{
+            SqlCommand cmd2 = new SqlCommand(queryInsert, connection);
+            cmd2.Parameters.AddWithValue("@BlogId", id);
+            cmd2.Parameters.AddWithValue("@BlogTitle", blog.Title);
+            cmd2.Parameters.AddWithValue("@BlogAuthor", blog.Author);
+            cmd2.Parameters.AddWithValue("@BlogContent", blog.Content);
 
-        //}
+            int result = cmd2.ExecuteNonQuery();
 
-        //[HttpDelete("{id}")]
-        //public IActionResult DeleteBlogs(int id)
-        //{
+            connection.Close();
 
-        //}
+            //Console.WriteLine(result == 1 ? "Updating successfully.." : "Updating failed..");
+
+            return Ok(result == 1 ? "Updating successfully.." : "Updating failed..");
+        }
+
+        [HttpPatch("{id}")]
+        public IActionResult PatchBlog(int id, BlogViewModel blog)
+        {
+            string conditions = "";
+            if (!string.IsNullOrEmpty(blog.Title))
+            {
+                conditions += " [BlogTitle] = @BlogTitle, ";
+            }
+            if (!string.IsNullOrEmpty(blog.Author))
+            {
+                conditions += " [BlogAuthor] = @BlogAuthor, ";
+            }
+            if (!string.IsNullOrEmpty(blog.Content))
+            {
+                conditions += " [BlogContent] = @BlogContent, ";
+            }
+
+            if (conditions.Length == 0)
+            {
+                return BadRequest("Invalid Parameters!");
+            }
+
+            conditions = conditions.Substring(0, conditions.Length - 2);
+
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            string queryInsert = $@"UPDATE [dbo].[Tbl_Blog] SET {conditions} WHERE BlogId = @BlogId";
+
+            SqlCommand cmd2 = new SqlCommand(queryInsert, connection);
+            cmd2.Parameters.AddWithValue("@BlogId", id);
+            if (!string.IsNullOrEmpty(blog.Title))
+            {
+                cmd2.Parameters.AddWithValue("@BlogTitle", blog.Title);
+            }
+            if (!string.IsNullOrEmpty(blog.Author))
+            {
+                cmd2.Parameters.AddWithValue("@BlogAuthor", blog.Author);
+            }
+            if (!string.IsNullOrEmpty(blog.Content))
+            {
+                cmd2.Parameters.AddWithValue("@BlogContent", blog.Content);
+            }
+
+            int result = cmd2.ExecuteNonQuery();
+
+            connection.Close();
+            return Ok(result == 1 ? "Updating successfully.." : "Updating failed..");
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteBlogs(int id)
+        {
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            string queryDelete = @"UPDATE [dbo].[Tbl_Blog] SET [DeleteFlag] = 1
+                                 WHERE BlogId = @BlogId";
+
+            SqlCommand cmd = new SqlCommand(queryDelete, connection);
+            cmd.Parameters.AddWithValue("@BlogId", id);
+
+            int result = cmd.ExecuteNonQuery();
+
+            connection.Close();
+
+            return Ok(result == 1 ? "Successfully deleted.." : "Deleting failed..");
+        }
     }
 }
