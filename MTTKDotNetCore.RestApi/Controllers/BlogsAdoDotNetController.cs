@@ -62,7 +62,7 @@ namespace MTTKDotNetCore.RestApi.Controllers
         [HttpGet("{id}")]
         public IActionResult GetBlogs(int id)
         {
-            List<BlogViewModel> lst = new List<BlogViewModel>();
+            BlogViewModel blog = new BlogViewModel();
             SqlConnection connection = new SqlConnection(_connectionString);
 
             connection.Open();
@@ -83,7 +83,7 @@ namespace MTTKDotNetCore.RestApi.Controllers
                 Console.WriteLine(reader["BlogAuthor"]);
                 Console.WriteLine(reader["BlogContent"]);
 
-                var item = new BlogViewModel
+                blog = new BlogViewModel
                 {
                     Id = Convert.ToInt32(reader["BlogId"]),
                     Title = Convert.ToString(reader["BlogTitle"]),
@@ -91,10 +91,9 @@ namespace MTTKDotNetCore.RestApi.Controllers
                     Content = Convert.ToString(reader["BlogContent"]),
                     DeleteFlag = Convert.ToBoolean(reader["DeleteFlag"])
                 };
-                lst.Add(item);
             }
             connection.Close();
-            return Ok(lst);
+            return Ok(blog);
         }
 
         [HttpPost]
