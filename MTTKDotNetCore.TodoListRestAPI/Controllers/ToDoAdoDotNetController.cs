@@ -159,7 +159,6 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
                               ,[PriorityLevel] = @PriorityLevel
                               ,[Status] = @Status
                               ,[DueDate] = @DueDate
-                              ,[CreatedDate] = @CreatedDate
                               ,[CompletedDate] = @CompletedDate
                          WHERE TaskID = @TaskId and DeleteFlag = 0;";
             SqlCommand cmd = new SqlCommand(query, connection);
@@ -170,7 +169,6 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
             cmd.Parameters.AddWithValue("@PriorityLevel", todo.PriorityLevel);
             cmd.Parameters.AddWithValue("@Status", todo.Status);
             cmd.Parameters.AddWithValue("@DueDate", todo.DueDate);
-            cmd.Parameters.AddWithValue("@CreatedDate", todo.CreatedDate);
             if (todo.Status == "Completed")
             {
                 cmd.Parameters.AddWithValue("@CompletedDate", todo.CompletedDate = DateTime.Now);
@@ -213,10 +211,6 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
             {
                 conditions += " [DueDate] = @DueDate, ";
             }
-            if (null != todo.CreatedDate)
-            {
-                conditions += " [CreatedDate] = @CreatedDate, ";
-            }
             if (null != todo.CompletedDate)
             {
                 conditions += " [CompletedDate] = @CompletedDate, ";
@@ -257,10 +251,6 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
             if (null != todo.DueDate)
             {
                 command.Parameters.AddWithValue("@DueDate", todo.DueDate);
-            }
-            if (null != todo.CreatedDate)
-            {
-                command.Parameters.AddWithValue("@CreatedDate", todo.CreatedDate);
             }
             if (todo.Status == "Completed")
             {
