@@ -13,14 +13,15 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
         [HttpGet]
         public IActionResult GetCategories()
         {
-            var lst = _db.TaskCategories.AsNoTracking().ToList();
+            var lst = _db.TaskCategories.AsNoTracking().Where(x => x.DeleteFlag == false).ToList();
             return Ok(lst);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetCategory(int id)
         {
-            var item = _db.TaskCategories.AsNoTracking().FirstOrDefault(x => x.CategoryId == id);
+            var item = _db.TaskCategories.AsNoTracking()
+                .Where(x => x.DeleteFlag == false).FirstOrDefault(x => x.CategoryId == id);
             if (item is null)
             {
                 return NotFound();
@@ -39,7 +40,8 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateCategory(int id, TaskCategory category)
         {
-            var item = _db.TaskCategories.AsNoTracking().FirstOrDefault(x => x.CategoryId == id);
+            var item = _db.TaskCategories.AsNoTracking()
+                .Where(x => x.DeleteFlag == false).FirstOrDefault(x => x.CategoryId == id);
             if (item is null)
             {
                 return NotFound();
@@ -56,7 +58,8 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
         [HttpPatch("{id}")]
         public IActionResult PatchCategory(int id, TaskCategory category)
         {
-            var item = _db.TaskCategories.AsNoTracking().FirstOrDefault(x => x.CategoryId == id);
+            var item = _db.TaskCategories.AsNoTracking()
+                .Where(x => x.DeleteFlag == false).FirstOrDefault(x => x.CategoryId == id);
             if (item is null)
             {
                 return NotFound();
@@ -82,10 +85,10 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
                 return NotFound();
             }
 
-            //item.DeleteFlag = true;
-            //_db.Entry(item).State = EntityState.Modified;
+            item.DeleteFlag = true;
+            _db.Entry(item).State = EntityState.Modified;
 
-            _db.Entry(item).State = EntityState.Deleted;
+            //_db.Entry(item).State = EntityState.Deleted;
             _db.SaveChanges();
 
             return Ok(item);
