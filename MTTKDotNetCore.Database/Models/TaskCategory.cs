@@ -9,5 +9,7 @@ public partial class TaskCategory
 
     public string CategoryName { get; set; } = null!;
 
+    public bool DeleteFlag { get; set; }
+
     public virtual ICollection<ToDoList> ToDoLists { get; set; } = new List<ToDoList>();
 }

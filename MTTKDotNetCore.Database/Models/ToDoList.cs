@@ -23,5 +23,7 @@ public partial class ToDoList
 
     public DateTime? CompletedDate { get; set; }
 
+    public bool DeleteFlag { get; set; }
+
     public virtual TaskCategory? Category { get; set; }
 }
