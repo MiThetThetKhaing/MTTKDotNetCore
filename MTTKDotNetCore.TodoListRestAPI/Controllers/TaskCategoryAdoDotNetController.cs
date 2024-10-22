@@ -20,7 +20,7 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
             connection.Open();
             string query = @"SELECT [CategoryID]
                           ,[CategoryName]
-                            FROM [dbo].[TaskCategory]";
+                            FROM [dbo].[TaskCategory] where DeleteFlag = 0;";
 
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataReader reader = command.ExecuteReader();
@@ -51,7 +51,7 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
 
             string query = @"SELECT [CategoryID]
                             ,[CategoryName]
-                            FROM [dbo].[TaskCategory] where CategoryID = @CategoryId;";
+                            FROM [dbo].[TaskCategory] where CategoryID = @CategoryId and DeleteFlag = 0;";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@CategoryId", id);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -67,7 +67,14 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
                 };
             }
             connection.Close();
-            return Ok(category);
+            if (category.Id > 0)
+            {
+                return Ok(category);
+            }
+            else
+            {
+                return BadRequest("No data Found!");
+            }
         }
 
         [HttpPost]
@@ -77,9 +84,9 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
             connection.Open();
 
             string query = @"INSERT INTO [dbo].[TaskCategory]
-                           ([CategoryName])
+                           ([CategoryName],[DeleteFlag])
                      VALUES
-                           (@CategoryName)";
+                           (@CategoryName,0)";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@CategoryName", category.Name);
 
@@ -148,8 +155,11 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
             SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
-            var deleteQuery = @"DELETE FROM [dbo].[TaskCategory]
-                                WHERE CategoryID = @CategoryId";
+            //var deleteQuery = @"DELETE FROM [dbo].[TaskCategory]
+            //                    WHERE CategoryID = @CategoryId";
+            var deleteQuery = @"UPDATE [dbo].[TaskCategory]
+                                   SET [DeleteFlag] = 1
+                                 WHERE CategoryID = @CategoryId;";
 
             SqlCommand command = new SqlCommand(deleteQuery, connection);
             command.Parameters.AddWithValue("@CategoryId", id);
