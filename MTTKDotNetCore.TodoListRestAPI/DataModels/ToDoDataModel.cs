@@ -11,5 +11,6 @@
         public DateTime DueDate { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime CompletedDate { get; set; }
+        public bool DeleteFlag { get; set; }
     }
 }

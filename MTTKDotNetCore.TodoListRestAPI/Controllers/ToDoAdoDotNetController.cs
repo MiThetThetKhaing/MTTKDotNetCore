@@ -29,7 +29,7 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
                           ,[DueDate]
                           ,[CreatedDate]
                           ,[CompletedDate]
-                      FROM [dbo].[ToDoList]";
+                      FROM [dbo].[ToDoList] where DeleteFlag = 0;";
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -59,7 +59,6 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
             SqlConnection connection = new SqlConnection(_connectionString);
 
             connection.Open();
-
             var query = @"SELECT [TaskID]
                           ,[TaskTitle]
                           ,[TaskDescription]
@@ -69,7 +68,7 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
                           ,[DueDate]
                           ,[CreatedDate]
                           ,[CompletedDate]
-                      FROM [dbo].[ToDoList] where TaskID = @TaskId";
+                      FROM [dbo].[ToDoList] where TaskID = @TaskId and DeleteFlag = 0;";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@TaskId", id);
             SqlDataReader reader = command.ExecuteReader();
@@ -89,7 +88,14 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
                 };
             }
             connection.Close();
-            return Ok(todo);
+            if (todo.Id > 0)
+            {
+                return Ok(todo);
+            }
+            else
+            {
+                return BadRequest("No data found!");
+            }
         }
 
         [HttpPost]
@@ -106,7 +112,8 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
                            ,[Status]
                            ,[DueDate]
                            ,[CreatedDate]
-                           ,[CompletedDate])
+                           ,[CompletedDate]
+                           ,[DeleteFlag])
                      VALUES
                            (@TaskTitle
                            ,@TaskDescription
@@ -115,7 +122,8 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
                            ,@Status
                            ,@DueDate
                            ,@CreatedDate
-                           ,@CompletedDate)";
+                           ,@CompletedDate
+                           ,0)";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@TaskTitle", todo.Title);
             cmd.Parameters.AddWithValue("@TaskDescription", todo.Description);
@@ -153,7 +161,7 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
                               ,[DueDate] = @DueDate
                               ,[CreatedDate] = @CreatedDate
                               ,[CompletedDate] = @CompletedDate
-                         WHERE TaskID = @TaskId";
+                         WHERE TaskID = @TaskId and DeleteFlag = 0;";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@TaskId", id);
             cmd.Parameters.AddWithValue("@TaskTitle", todo.Title);
@@ -223,7 +231,7 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
             SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
-            string query = $@"UPDATE [dbo].[ToDoList] SET {conditions} WHERE TaskID = @TaskId";
+            string query = $@"UPDATE [dbo].[ToDoList] SET {conditions} WHERE TaskID = @TaskId AND DeleteFlag = 0;";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@TaskId", id);
             if (!string.IsNullOrEmpty(todo.Title))
@@ -274,8 +282,11 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
             SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
-            var deleteQuery = @"DELETE FROM [dbo].[ToDoList]
-                                WHERE TaskID = @TaskId";
+            //var deleteQuery = @"DELETE FROM [dbo].[ToDoList]
+            //                    WHERE TaskID = @TaskId";
+            var deleteQuery = @"UPDATE [dbo].[ToDoList]
+                                   SET [DeleteFlag] = 1
+                                 WHERE TaskID = @TaskId;";
 
             SqlCommand command = new SqlCommand(deleteQuery, connection);
             command.Parameters.AddWithValue("@TaskId", id);
