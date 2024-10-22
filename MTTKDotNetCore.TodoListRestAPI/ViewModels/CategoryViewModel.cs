@@ -8,6 +8,8 @@ namespace MTTKDotNetCore.TodoListRestAPI.ViewModels
 
         public string? Name { get; set; }
 
+        public bool DeleteFlag { get; set; }
+
         //public virtual ICollection<ToDoList> ToDoLists { get; set; }
     }
 }
