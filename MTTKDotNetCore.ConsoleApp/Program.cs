@@ -47,5 +47,10 @@ Console.ReadKey();
 //eFCoreExample.Update(10, "update", "Mttk", "updating");
 //eFCoreExample.Delete(8);
 
+//AdoDotNetExampleWithService adoDotNetExampleWithService = new AdoDotNetExampleWithService();
+//adoDotNetExampleWithService.Read();
+
+//DapperExampleWithService dapperExampleWithService = new DapperExampleWithService();
+//dapperExampleWithService.Read();
 
 Console.ReadKey();
