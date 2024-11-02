@@ -71,6 +71,26 @@ namespace MTTKDotNetCore.Shared
                     cmd.Parameters.AddWithValue(sqlParameter.Name, sqlParameter.Value);
                 }
             }
+            var result = cmd.ExecuteNonQuery();
+            connection.Close();
+
+            return result;
+        }
+
+        public int ExecuteNonQuery(string query) //SqlParameterModel[] sqlParameters = null
+        {
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            SqlParameterModel[] sqlParameters = null;
+            if (sqlParameters is not null)
+            {
+                foreach (var sqlParameter in sqlParameters)
+                {
+                    cmd.Parameters.AddWithValue(sqlParameter.Name, sqlParameter.Value);
+                }
+            }
 
             var result = cmd.ExecuteNonQuery();
             connection.Close();
@@ -91,4 +111,5 @@ namespace MTTKDotNetCore.Shared
             Value = value;
         }
     }
+    
 }
