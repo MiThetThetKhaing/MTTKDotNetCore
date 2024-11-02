@@ -22,23 +22,23 @@ namespace MTTKDotNetCore.Shared
         {
             //Console.WriteLine("Query is: " + query);
             using IDbConnection db= new SqlConnection(_connectionString);
-            var lst = db.Query<T>(query).ToList();
+            var lst = db.Query<T>(query, param).ToList();
 
             return lst;
         }
-
+            
         public T QueryFirstOrDefault<T>(string query, object? param = null)
         {
             using IDbConnection db = new SqlConnection(_connectionString);
-            var item = db.QueryFirstOrDefault<T>(query);
-
+            var item = db.QueryFirstOrDefault<T>(query, param);
+            
             return item;
         }
 
         public int Execute(string query, object? param = null)
         {
             using IDbConnection db = new SqlConnection(_connectionString);
-            int item = db.Execute(query);
+            int item = db.Execute(query, param);
 
             return item;
         }
