@@ -2,10 +2,10 @@
   "Tbl_Bird": [
     {
       "Id": 1,
-      "BirdMyanmarName": "ငှက်စိမ်းရင်ဝါ",
-      "BirdEnglishName": "Orange-bellied Leafbird",
-      "Description": "မြန်မာလိုတော့ ငှက်စိမ်းရင်ဝါလို့ ခေါ်ကြတယ်။ အစိမ်းရောင် အမွှေးအတောင်တွေပိုင်ဆိုင်ထားတဲ့ ငှက်လေး တကောင်ပဲ ဖြစ်ပါတယ်။ ကျနော်တို့တွေ စိတ်ထဲ စွဲနေတာက အစိမ်းရောင် ငှက်ဆိုရင် အနီးစပ်ဆုံး ကြက်တူရွေးကို မြင်မိကြမှာပါ။  \nမြန်မာနိုင်ငံမှာဆိုရင်တော့ ကျနော်က သူ့ကို ကလော ဗျူးပွိုင့်သွားတဲ့လမ်းမှာ မှတ်တမ်းတင်ဖူးပါတယ်။​ အသံဆူဆူညံညံ အော်တတ်ပီး ချစ်စရာ အစိမ်းရောင် ငှက်လေး တမျိုး ဖြစ်ပါတယ်။",
-      "ImagePath": "img/1_Orange-belliedLeafbird.jpg"
+      "BirdMyanmarName": "no",
+      "BirdEnglishName": "string",
+      "Description": "string",
+      "ImagePath": "string"
     },
     {
       "Id": 2,
@@ -139,6 +139,13 @@
       "BirdEnglishName": "Eurasian Tree Sparrow",
       "Description": "\n\nဒါကတော့ နောက်ထပ် စာ တမျိုးဖြစ်တဲ့ ပသျှူးစာ အမျိုးအစားပေါ့ဗျာ။ အမှတ်တမဲ့ ကြည့်ရင်တော့ ကျနော်တို့ နေ့တိုင်း မြင်နေကြဖြစ်တဲ့ House Sparrow စာကလေးနဲ့ တော်တော်တူပါတယ်။",
       "ImagePath": "img/20_EurasianTreeSparrow.jpg"
+    },
+    {
+      "Id": 22,
+      "BirdMyanmarName": "ငှက်သစ်",
+      "BirdEnglishName": "new patch",
+      "Description": "new",
+      "ImagePath": "new.png"
     }
   ]
 }

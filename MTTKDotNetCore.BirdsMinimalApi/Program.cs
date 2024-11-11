@@ -1,3 +1,4 @@
+using MTTKDotNetCore.BirdsMinimalApi.Endpoints.Birds;
 using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,49 +39,7 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
-app.MapGet("/birds", () =>
-{
-    string folderPath = "Data/Birds.json";
-    var jsonStr = File.ReadAllText(folderPath);
-    var result = JsonConvert.DeserializeObject<BirdResponseModel>(jsonStr)!;
-
-    return Results.Ok(result.Tbl_Bird);
-})
-.WithName("GetBirds")
-.WithOpenApi();
-
-app.MapGet("/birds/{id}", (int id) =>
-{
-    string folderPath = "Data/Birds.json";
-    var jsonStr = File.ReadAllText(folderPath);
-    var result = JsonConvert.DeserializeObject<BirdResponseModel>(jsonStr)!;
-
-    var item = result.Tbl_Bird.FirstOrDefault(x => x.Id == id);
-    if (item is null) return Results.BadRequest("No data found!");
-
-    return Results.Ok(item);
-})
-.WithName("GetBird")
-.WithOpenApi();
-
-//app.MapPost("/birds", (BirdModel bird) =>
-//{
-//    string folderPath = "Data/Birds.json";
-//    var model = new BirdModel()
-//    {
-//        Id = bird.Id,
-//        BirdMyanmarName = bird.BirdMyanmarName,
-//        BirdEnglishName = bird.BirdEnglishName,
-//        Description = bird.Description,
-//        ImagePath = bird.ImagePath
-//    };
-//    string result = JsonConvert.SerializeObject(model, Formatting.Indented);
-//    var item = JsonConvert.DeserializeObject<BirdModel>(result);
-    
-//    return Results.Ok(item);
-//})
-//.WithName("CreateBird")
-//.WithOpenApi();
+app.UseBirdsEndpoints();
 
 app.Run();
 
@@ -92,7 +51,7 @@ internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary
 
 public class BirdResponseModel
 {
-    public BirdModel[] Tbl_Bird { get; set; }
+    public List<BirdModel> Tbl_Bird { get; set; }
 }
 
 public class BirdModel
