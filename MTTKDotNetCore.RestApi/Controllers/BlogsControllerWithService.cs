@@ -5,6 +5,7 @@ using MTTKDotNetCore.Domain.Features.Blog;
 
 namespace MTTKDotNetCore.RestApi.Controllers
 {
+    // Presentation Layer
     [Route("api/[controller]")]
     [ApiController]
     public class BlogsControllerWithService : Controller
