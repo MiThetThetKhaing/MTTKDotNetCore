@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.10" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MTTKDotNetCore.Database\MTTKDotNetCore.Database.csproj" />
     <ProjectReference Include="..\MTTKDotNetCore.Shared\MTTKDotNetCore.Shared.csproj" />
   </ItemGroup>
