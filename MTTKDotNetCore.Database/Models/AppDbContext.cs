@@ -17,7 +17,11 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<TaskCategory> TaskCategories { get; set; }
 
+    public virtual DbSet<TblAccount> TblAccounts { get; set; }
+
     public virtual DbSet<TblBlog> TblBlogs { get; set; }
+
+    public virtual DbSet<TblTransactionHistory> TblTransactionHistories { get; set; }
 
     public virtual DbSet<ToDoList> ToDoLists { get; set; }
 
@@ -39,6 +43,18 @@ public partial class AppDbContext : DbContext
                 .IsUnicode(false);
         });
 
+        modelBuilder.Entity<TblAccount>(entity =>
+        {
+            entity.ToTable("Tbl_Account");
+
+            entity.Property(e => e.Balance).HasColumnType("decimal(25, 2)");
+            entity.Property(e => e.FullName).HasMaxLength(150);
+            entity.Property(e => e.MobileNo).HasMaxLength(50);
+            entity.Property(e => e.Pin)
+                .HasMaxLength(6)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<TblBlog>(entity =>
         {
             entity.HasKey(e => e.BlogId);
@@ -47,6 +63,21 @@ public partial class AppDbContext : DbContext
 
             entity.Property(e => e.BlogAuthor).HasMaxLength(50);
             entity.Property(e => e.BlogTitle).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<TblTransactionHistory>(entity =>
+        {
+            entity.HasKey(e => e.TranId);
+
+            entity.ToTable("Tbl_TransactionHistory");
+
+            entity.Property(e => e.Amount).HasColumnType("decimal(25, 2)");
+            entity.Property(e => e.FromMobileNo).HasMaxLength(50);
+            entity.Property(e => e.Notes).HasMaxLength(150);
+            entity.Property(e => e.ToMobileNo).HasMaxLength(50);
+            entity.Property(e => e.TranDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
         });
 
         modelBuilder.Entity<ToDoList>(entity =>
