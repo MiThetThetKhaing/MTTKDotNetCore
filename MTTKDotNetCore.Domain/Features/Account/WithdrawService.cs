@@ -12,7 +12,7 @@ namespace MTTKDotNetCore.Domain.Features.Account
     {
         private readonly AppDbContext _db = new AppDbContext();
 
-        public object CreateWithdraw(string mobileNo, decimal balance)
+        public TblAccount CreateWithdraw(string mobileNo, decimal balance)
         {
             var mobile = _db.TblAccounts.AsNoTracking().Where(x => x.DeleteFlag == false).FirstOrDefault(x => x.MobileNo == mobileNo);
             if (mobile != null)
@@ -21,11 +21,7 @@ namespace MTTKDotNetCore.Domain.Features.Account
                 {
                     if (10000 >= mobile.Balance - balance)
                     {
-                        var error = new ErrorResponse
-                        {
-                            errorMessage = "Insufficient Balance."
-                        };
-                        return error;
+                        return null;
                     }
                     else
                     {
@@ -34,22 +30,14 @@ namespace MTTKDotNetCore.Domain.Features.Account
                 }
                 else
                 {
-                    var error = new ErrorResponse
-                    {
-                        errorMessage = "Invalid Balance."
-                    };
-                    return error;
+                    return null;
                 }
                 var result = _db.TblAccounts.Update(mobile);
                 _db.SaveChanges();
             }
             else
             {
-                var error = new ErrorResponse
-                {
-                    errorMessage = "Mobile phone number doesn't exist."
-                };
-                return error;
+                return null;
             }
             return mobile;
         }

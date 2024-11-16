@@ -13,7 +13,7 @@ namespace MTTKDotNetCore.Domain.Features.Account
     {
         AppDbContext _db = new AppDbContext();
 
-        public object GetHistories(string phone)
+        public List<TblTransactionHistory> GetHistories(string phone)
         {
             var result = _db.TblTransactionHistories
                 .AsNoTracking()
@@ -23,12 +23,12 @@ namespace MTTKDotNetCore.Domain.Features.Account
                 .ToList();
             if (result.Count == 0)
             {
-                return new ErrorResponse { errorMessage = "No History!!"};
+                return null;
             }
             return result;
         }
 
-        public object GetHistory(string phone)
+        public TblTransactionHistory GetHistory(string phone)
         {
             var result = _db.TblTransactionHistories
                 .AsNoTracking()
@@ -38,7 +38,7 @@ namespace MTTKDotNetCore.Domain.Features.Account
 
             if (result is null)
             {
-                return new ErrorResponse { errorMessage = "No History!!" };
+                return null;
             }
             return result;
         }

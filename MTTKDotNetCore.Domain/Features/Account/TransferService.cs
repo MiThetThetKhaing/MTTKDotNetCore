@@ -15,7 +15,7 @@ namespace MTTKDotNetCore.Domain.Features.Account
     {
         private readonly AppDbContext _db = new AppDbContext();
 
-        public object CreateTransfer(string fromMobile, string toMobile, decimal amount, string pin, string notes)
+        public bool? CreateTransfer(string fromMobile, string toMobile, decimal amount, string pin, string notes)
         {
             var fromPhone = _db.TblAccounts.AsNoTracking().Where(x => x.DeleteFlag == false).FirstOrDefault(x => x.MobileNo == fromMobile);
             var toPhone = _db.TblAccounts.AsNoTracking().Where(x => x.DeleteFlag == false).FirstOrDefault(x => x.MobileNo == toMobile);
@@ -28,11 +28,7 @@ namespace MTTKDotNetCore.Domain.Features.Account
                     {
                         if (amount > fromPhone.Balance || 10000 > fromPhone.Balance - amount)
                         {
-                            var obj = new ErrorResponse
-                            {
-                                errorMessage = "Invalid amount!!!"
-                            };
-                            return obj;
+                            return null;
                         }
                         else
                         {
@@ -56,31 +52,19 @@ namespace MTTKDotNetCore.Domain.Features.Account
                     }
                     else
                     {
-                        var error = new ErrorResponse
-                        {
-                            errorMessage = "Uncorrect Pin!!!"
-                        };
-                        return error;
+                        return null;
                     }
                 }
                 else
                 {
-                    var error = new ErrorResponse
-                    {
-                        errorMessage = "Mobile Phone Numbers cannot be the same!"
-                    };
-                    return error;
+                    return null;
                 }
             }
             else
             {
-                var error = new ErrorResponse
-                {
-                    errorMessage = "Mobile phone number doesn't exist."
-                };
-                return error;
+                return null;
             }
-            return "Transaction successfully completed...^_^";
+            return true;
         }
     }
 }

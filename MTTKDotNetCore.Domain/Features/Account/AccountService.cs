@@ -29,7 +29,7 @@ namespace MTTKDotNetCore.Domain.Features.Account
             return result;
         }
 
-        public object CreateAccount(TblAccount account)
+        public TblAccount CreateAccount(TblAccount account)
         {
             var phone = _db.TblAccounts.FirstOrDefault(x => x.MobileNo == account.MobileNo);
             Console.WriteLine(phone);
@@ -41,11 +41,7 @@ namespace MTTKDotNetCore.Domain.Features.Account
             else
             {
                 //Console.WriteLine("Mobile phone no is already taken.");
-                var error = new ErrorResponse
-                {
-                    errorMessage = "Mobile phone no is already taken."
-                };
-                return error;
+                return null;
             }
             return account;
         }

@@ -12,7 +12,7 @@ namespace MTTKDotNetCore.Domain.Features.Account
     {
         private readonly AppDbContext _db = new AppDbContext();
 
-        public object CreateDeposit(string mobileNo, decimal balance)
+        public TblAccount CreateDeposit(string mobileNo, decimal balance)
         {
             var mobile = _db.TblAccounts.AsNoTracking().Where(x => x.DeleteFlag == false).FirstOrDefault(x => x.MobileNo == mobileNo);
             if (mobile != null)
@@ -26,20 +26,12 @@ namespace MTTKDotNetCore.Domain.Features.Account
                 }
                 else
                 {
-                    var error = new ErrorResponse
-                    {
-                        errorMessage = "Invalid Balance."
-                    };
-                    return error;
+                    return null;
                 }
             }
             else
             {
-                var error = new ErrorResponse
-                {
-                    errorMessage = "Wrong Phone Number."
-                };
-                return error;
+                return null;
             }
             return mobile;
         }
