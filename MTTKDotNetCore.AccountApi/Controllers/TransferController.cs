@@ -16,21 +16,8 @@ namespace MTTKDotNetCore.AccountApi.Controllers
         public async Task<IActionResult> Transfer (string fromMobile, string toMobile, decimal amount, string pin, string notes)
         {
             var result = await _transferService.CreateTransfer(fromMobile, toMobile, amount, pin, notes);
-            var result2 = await _transferService.CreateTransfer(fromMobile, toMobile, amount, pin, notes);
 
-            //if (result.Response.IsSuccess) 
-            //    return Ok(result);
-
-            //if (result.Response.RespType == EnumRespType.ValidationError)
-            //    return BadRequest(result);
-
-            //if (result.Response.RespType == EnumRespType.SystemError)
-            //    return StatusCode(500, result);
-
-            //return Ok(result);
-
-            //return Execute(result);
-            return Execute(result2);
+            return Execute(result);
         }
     }
 }

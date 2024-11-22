@@ -9,18 +9,6 @@ namespace MTTKDotNetCore.AccountApi.Controllers
     {
         private readonly DepositService _serviceDeposit = new DepositService();
 
-        //[HttpGet]
-        //public IActionResult GetDeposits()
-        //{
-            
-        //}
-
-        //[HttpGet]
-        //public IActionResult GetDeposit()
-        //{
-
-        //}
-
         [HttpPost]
         public IActionResult Deposit(string mobileNo, decimal balance)
         {

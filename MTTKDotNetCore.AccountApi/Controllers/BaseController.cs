@@ -11,6 +11,7 @@ namespace MTTKDotNetCore.MiniKpayApi.Controllers
     [ApiController]
     public class BaseController : ControllerBase
     {
+        [NonAction]
         public IActionResult Execute(object model)
         {
             JObject jObj = JObject.Parse(JsonConvert.SerializeObject(model));
@@ -33,6 +34,7 @@ namespace MTTKDotNetCore.MiniKpayApi.Controllers
             return StatusCode(500, "Invalid Response Model. Please add BaseResponseModel to your ResponseModel.");
         }
 
+        [NonAction]
         public IActionResult Execute<T>(Result<T> model)
         {
             if (model.IsValidationError)
@@ -42,8 +44,6 @@ namespace MTTKDotNetCore.MiniKpayApi.Controllers
                 return StatusCode(500, model);
 
             return Ok(model);
-
-            return StatusCode(500, "Invalid Response Model. Please add BaseResponseModel to your ResponseModel.");
         }
     }
 }

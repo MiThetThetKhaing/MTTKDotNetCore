@@ -21,7 +21,7 @@ namespace MTTKDotNetCore.Domain.Features.Account
 
         public TblAccount GetAccount(int id)
         {
-            var result = _db.TblAccounts.AsNoTracking().FirstOrDefault(x => x.Id == id);
+            var result = _db.TblAccounts.AsNoTracking().Where(x => x.DeleteFlag == false).FirstOrDefault(x => x.Id == id);
             if (result is null)
             {
                 return null;
