@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -12,7 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MTTKDotNetCore.Domain\MTTKDotNetCore.Domain.csproj" />
+    <ProjectReference Include="..\MTTKDotNetCore.PointOfSale.Database\MTTKDotNetCore.PointOfSale.Database.csproj" />
+    <ProjectReference Include="..\MTTKDotNetCore.PointOfSale.Domain\MTTKDotNetCore.PointOfSale.Domain.csproj" />
   </ItemGroup>
 
 </Project>
