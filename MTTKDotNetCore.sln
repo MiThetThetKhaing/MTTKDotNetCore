@@ -28,13 +28,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.Domain", "MT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.MiniKpayApi", "MTTKDotNetCore.AccountApi\MTTKDotNetCore.MiniKpayApi.csproj", "{B0021F02-3445-4518-B5A5-70A67884FDB3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.PointOfSaleApi", "MTTKDotNetCore.PointOfSaleApi\MTTKDotNetCore.PointOfSaleApi.csproj", "{D04D9FA8-0C16-442C-9BDF-8615E93F89A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.PointOfSale.Api", "MTTKDotNetCore.PointOfSaleApi\MTTKDotNetCore.PointOfSale.Api.csproj", "{D04D9FA8-0C16-442C-9BDF-8615E93F89A8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.MiniKpay.Api", "MTTKDotNetCore.MiniKpay.Api\MTTKDotNetCore.MiniKpay.Api.csproj", "{947E722F-E94D-477C-B49C-3A33333E6126}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTTKDotNetCore.MiniKpay.Database", "MTTKDotNetCore.MiniKpay.Database\MTTKDotNetCore.MiniKpay.Database.csproj", "{0F351A60-4BF9-42C7-9A70-336D65E0A9D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.MiniKpay.Database", "MTTKDotNetCore.MiniKpay.Database\MTTKDotNetCore.MiniKpay.Database.csproj", "{0F351A60-4BF9-42C7-9A70-336D65E0A9D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTTKDotNetCore.MiniKpay.Domain", "MTTKDotNetCore.MiniKpay.Domain\MTTKDotNetCore.MiniKpay.Domain.csproj", "{F8DAEB0E-CE80-4CF7-9D29-AC9C0548E252}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.MiniKpay.Domain", "MTTKDotNetCore.MiniKpay.Domain\MTTKDotNetCore.MiniKpay.Domain.csproj", "{F8DAEB0E-CE80-4CF7-9D29-AC9C0548E252}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.ConsoleApp3", "MTTKDotNetCore.ConsoleApp3\MTTKDotNetCore.ConsoleApp3.csproj", "{3C425BC0-468D-4BAA-8164-BB50D24FA5E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTTKDotNetCore.PointOfSale.Database", "MTTKDotNetCore.PointOfSale.Database\MTTKDotNetCore.PointOfSale.Database.csproj", "{43A382C8-8D0C-4BAE-BDB6-4ECA465BD3E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTTKDotNetCore.PointOfSale.Domain", "MTTKDotNetCore.PointOfSale.Domain\MTTKDotNetCore.PointOfSale.Domain.csproj", "{C9F2B3F9-10C3-455B-B649-26F02A271DBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,6 +104,18 @@ Global
 		{F8DAEB0E-CE80-4CF7-9D29-AC9C0548E252}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8DAEB0E-CE80-4CF7-9D29-AC9C0548E252}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8DAEB0E-CE80-4CF7-9D29-AC9C0548E252}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C425BC0-468D-4BAA-8164-BB50D24FA5E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C425BC0-468D-4BAA-8164-BB50D24FA5E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C425BC0-468D-4BAA-8164-BB50D24FA5E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C425BC0-468D-4BAA-8164-BB50D24FA5E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43A382C8-8D0C-4BAE-BDB6-4ECA465BD3E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43A382C8-8D0C-4BAE-BDB6-4ECA465BD3E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43A382C8-8D0C-4BAE-BDB6-4ECA465BD3E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43A382C8-8D0C-4BAE-BDB6-4ECA465BD3E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9F2B3F9-10C3-455B-B649-26F02A271DBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9F2B3F9-10C3-455B-B649-26F02A271DBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9F2B3F9-10C3-455B-B649-26F02A271DBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9F2B3F9-10C3-455B-B649-26F02A271DBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
