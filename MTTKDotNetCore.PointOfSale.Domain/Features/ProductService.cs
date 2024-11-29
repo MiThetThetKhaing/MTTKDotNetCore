@@ -80,7 +80,7 @@ namespace MTTKDotNetCore.PointOfSale.Domain.Features
                 {
                     return Result<ProductResponseModel>.ValidationError("Product Category Code doesn't exists. Please create first!");
                 }
-                if (product.ProductCode.Length > 12 || product.ProductCode.Length < 12)
+                if (product.ProductCode!.Length > 12 || product.ProductCode.Length < 12)
                 {
                     return Result<ProductResponseModel>.ValidationError("Product code length must be 12 digit.");
                 }
