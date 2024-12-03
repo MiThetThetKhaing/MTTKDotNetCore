@@ -9,7 +9,12 @@ namespace MTTKDotNetCore.TodoListRestAPI.Controllers
     [ApiController]
     public class ToDoListController : Controller
     {
-        private readonly AppDbContext _db = new AppDbContext(); 
+        private readonly AppDbContext _db;
+
+        public ToDoListController(AppDbContext db)
+        {
+            _db = db;
+        }
 
         [HttpGet]
         public IActionResult GetToDoLists()
