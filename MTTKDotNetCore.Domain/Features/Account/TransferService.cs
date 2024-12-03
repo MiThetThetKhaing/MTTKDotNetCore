@@ -16,7 +16,12 @@ namespace MTTKDotNetCore.Domain.Features.Account
 {
     public class TransferService
     {
-        private readonly AppDbContext _db = new AppDbContext();
+        private readonly AppDbContext _db;
+
+        public TransferService(AppDbContext db)
+        {
+            _db = db;
+        }
 
         public async Task<Result<ResultTransferResponseModel>> CreateTransfer(string fromMobile, string toMobile, decimal amount, string pin, string notes)
         {

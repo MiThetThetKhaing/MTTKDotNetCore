@@ -11,7 +11,12 @@ namespace MTTKDotNetCore.Domain.Features.Account
     // Business Logic + Data Access
     public class AccountService
     {
-        private readonly AppDbContext _db = new AppDbContext();
+        private readonly AppDbContext _db;
+
+        public AccountService(AppDbContext db)
+        {
+            _db = db;
+        }
 
         public List<TblAccount> GetAccounts()
         {

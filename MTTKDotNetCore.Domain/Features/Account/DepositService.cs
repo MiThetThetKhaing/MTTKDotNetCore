@@ -10,7 +10,12 @@ namespace MTTKDotNetCore.Domain.Features.Account
 {
     public class DepositService
     {
-        private readonly AppDbContext _db = new AppDbContext();
+        private readonly AppDbContext _db;
+
+        public DepositService(AppDbContext db)
+        {
+            _db = db;
+        }
 
         public TblAccount CreateDeposit(string mobileNo, decimal balance)
         {

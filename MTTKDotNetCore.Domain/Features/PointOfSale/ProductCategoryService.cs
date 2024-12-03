@@ -10,7 +10,12 @@ namespace MTTKDotNetCore.Domain.Features.PointOfSale
 {
     public class ProductCategoryService
     {
-        AppDbContext _db = new AppDbContext();
+        private readonly AppDbContext _db;
+
+        public ProductCategoryService(AppDbContext db)
+        {
+            _db = db;
+        }
 
         public List<TblProductCategory> GetProductCategories()
         {

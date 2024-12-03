@@ -11,7 +11,12 @@ namespace MTTKDotNetCore.Domain.Features.Account
 {
     public class TransactionHistoryService
     {
-        AppDbContext _db = new AppDbContext();
+        private readonly AppDbContext _db;
+
+        public TransactionHistoryService(AppDbContext db)
+        {
+            _db = db;
+        }
 
         public List<TblTransactionHistory> GetHistories(string phone)
         {

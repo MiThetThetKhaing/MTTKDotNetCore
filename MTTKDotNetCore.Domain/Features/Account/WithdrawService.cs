@@ -10,7 +10,12 @@ namespace MTTKDotNetCore.Domain.Features.Account
 {
     public class WithdrawService
     {
-        private readonly AppDbContext _db = new AppDbContext();
+        private readonly AppDbContext _db;
+
+        public WithdrawService(AppDbContext db)
+        {
+            _db = db;
+        }
 
         public TblAccount CreateWithdraw(string mobileNo, decimal balance)
         {
