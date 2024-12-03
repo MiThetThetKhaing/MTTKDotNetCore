@@ -16,6 +16,7 @@
     <ProjectReference Include="..\MTTKDotNetCore.Database\MTTKDotNetCore.Database.csproj" />
     <ProjectReference Include="..\MTTKDotNetCore.Domain\MTTKDotNetCore.Domain.csproj" />
     <ProjectReference Include="..\MTTKDotNetCore.Shared\MTTKDotNetCore.Shared.csproj" />
+    <ProjectReference Include="..\MTTKDotNetCore.TodoListRestAPI\MTTKDotNetCore.TodoListRestAPI.csproj" />
   </ItemGroup>
 
 </Project>

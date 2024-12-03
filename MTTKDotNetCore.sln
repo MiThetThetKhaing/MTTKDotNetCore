@@ -20,13 +20,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.TodoListRest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.Shared", "MTTKDotNetCore.Shared\MTTKDotNetCore.Shared.csproj", "{6A47A18A-08EE-466D-A463-49DD6EE3E17B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.BirdsMinimalApi", "MTTKDotNetCore.BirdsMinimalApi\MTTKDotNetCore.BirdsMinimalApi.csproj", "{EF9818B3-B40C-435A-8E0B-82CDAAE8F749}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.SnakeMinimalApi", "MTTKDotNetCore.SnakeMinimalApi\MTTKDotNetCore.SnakeMinimalApi.csproj", "{D9C37FFE-6ADD-4B8F-83A0-4045B48204FB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.Domain", "MTTKDotNetCore.Domain\MTTKDotNetCore.Domain.csproj", "{DCC05880-6ADD-49B4-A4B8-8B4ADFE3BEA8}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.MiniKpayApi", "MTTKDotNetCore.AccountApi\MTTKDotNetCore.MiniKpayApi.csproj", "{B0021F02-3445-4518-B5A5-70A67884FDB3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.PointOfSale.Api", "MTTKDotNetCore.PointOfSaleApi\MTTKDotNetCore.PointOfSale.Api.csproj", "{D04D9FA8-0C16-442C-9BDF-8615E93F89A8}"
 EndProject
@@ -38,9 +34,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.MiniKpay.Dom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.ConsoleApp3", "MTTKDotNetCore.ConsoleApp3\MTTKDotNetCore.ConsoleApp3.csproj", "{3C425BC0-468D-4BAA-8164-BB50D24FA5E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTTKDotNetCore.PointOfSale.Database", "MTTKDotNetCore.PointOfSale.Database\MTTKDotNetCore.PointOfSale.Database.csproj", "{43A382C8-8D0C-4BAE-BDB6-4ECA465BD3E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.PointOfSale.Database", "MTTKDotNetCore.PointOfSale.Database\MTTKDotNetCore.PointOfSale.Database.csproj", "{43A382C8-8D0C-4BAE-BDB6-4ECA465BD3E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTTKDotNetCore.PointOfSale.Domain", "MTTKDotNetCore.PointOfSale.Domain\MTTKDotNetCore.PointOfSale.Domain.csproj", "{C9F2B3F9-10C3-455B-B649-26F02A271DBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTTKDotNetCore.PointOfSale.Domain", "MTTKDotNetCore.PointOfSale.Domain\MTTKDotNetCore.PointOfSale.Domain.csproj", "{C9F2B3F9-10C3-455B-B649-26F02A271DBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,10 +68,6 @@ Global
 		{6A47A18A-08EE-466D-A463-49DD6EE3E17B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A47A18A-08EE-466D-A463-49DD6EE3E17B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A47A18A-08EE-466D-A463-49DD6EE3E17B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EF9818B3-B40C-435A-8E0B-82CDAAE8F749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF9818B3-B40C-435A-8E0B-82CDAAE8F749}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EF9818B3-B40C-435A-8E0B-82CDAAE8F749}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EF9818B3-B40C-435A-8E0B-82CDAAE8F749}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D9C37FFE-6ADD-4B8F-83A0-4045B48204FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D9C37FFE-6ADD-4B8F-83A0-4045B48204FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9C37FFE-6ADD-4B8F-83A0-4045B48204FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -84,10 +76,6 @@ Global
 		{DCC05880-6ADD-49B4-A4B8-8B4ADFE3BEA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCC05880-6ADD-49B4-A4B8-8B4ADFE3BEA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCC05880-6ADD-49B4-A4B8-8B4ADFE3BEA8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B0021F02-3445-4518-B5A5-70A67884FDB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0021F02-3445-4518-B5A5-70A67884FDB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0021F02-3445-4518-B5A5-70A67884FDB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0021F02-3445-4518-B5A5-70A67884FDB3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D04D9FA8-0C16-442C-9BDF-8615E93F89A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D04D9FA8-0C16-442C-9BDF-8615E93F89A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D04D9FA8-0C16-442C-9BDF-8615E93F89A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
