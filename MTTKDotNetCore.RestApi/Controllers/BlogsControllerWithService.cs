@@ -10,11 +10,11 @@ namespace MTTKDotNetCore.RestApi.Controllers
     [ApiController]
     public class BlogsControllerWithService : Controller
     {
-        private readonly BlogService _service;
+        private readonly IBlogService _service;
 
-        public BlogsControllerWithService()
+        public BlogsControllerWithService(IBlogService service)
         {
-            _service = new BlogService();
+            _service = service;
         }
 
         [HttpGet]
