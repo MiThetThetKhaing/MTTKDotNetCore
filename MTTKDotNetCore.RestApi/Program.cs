@@ -12,7 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(opt =>
 {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection"));
-});
+}, ServiceLifetime.Transient, ServiceLifetime.Transient);
+
 builder.Services.AddScoped<IBlogService, BlogService>();
 //builder.Services.AddScoped<BlogV2Service>();
 

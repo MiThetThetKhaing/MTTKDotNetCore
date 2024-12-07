@@ -10,11 +10,12 @@ namespace MTTKDotNetCore.RestApi.Controllers
     [ApiController]
     public class BlogsDapperWithServiceController : Controller
     {
-        private readonly string _connectionString = "Data Source=DESKTOP-6QTP69L\\MSSQLSERVER2022; Initial Catalog=DotNetTrainingBatch5; User ID=sa; Password=sa123;";
+        private readonly string _connectionString;
         private readonly DapperService _dapperService;
 
-        public BlogsDapperWithServiceController()
+        public BlogsDapperWithServiceController(IConfiguration configuration)
         {
+            _connectionString = configuration.GetConnectionString("DbConnection")!;
             _dapperService = new DapperService(_connectionString);
         }
 

@@ -12,11 +12,12 @@ namespace MTTKDotNetCore.RestApi.Controllers
     [ApiController]
     public class BlogsAdoDotNetWithServiceController : Controller
     {
-        private readonly string _connectionString = "Data Source=DESKTOP-6QTP69L\\MSSQLSERVER2022; Initial Catalog=DotNetTrainingBatch5; User ID=sa; Password=sa123; TrustServerCertificate=true";
+        private readonly string _connectionString;
         private readonly AdoDotNetService _adoDotNetService;
 
-        public BlogsAdoDotNetWithServiceController()
+        public BlogsAdoDotNetWithServiceController(IConfiguration configuration)
         {
+            _connectionString = configuration.GetConnectionString("DbConnection")!;
             _adoDotNetService = new AdoDotNetService(_connectionString);
         }
 
