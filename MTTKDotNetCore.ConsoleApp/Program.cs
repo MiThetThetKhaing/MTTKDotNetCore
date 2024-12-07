@@ -2,11 +2,12 @@
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using Microsoft.Extensions.DependencyInjection;
 using MTTKDotNetCore.ConsoleApp;
 
-Console.WriteLine("Hello, World!");
+//Console.WriteLine("Hello, World!");
 //Console.ReadLine();
-Console.ReadKey();
+//Console.ReadKey();
 
 // md => markdown 
 
@@ -52,5 +53,10 @@ Console.ReadKey();
 
 //DapperExampleWithService dapperExampleWithService = new DapperExampleWithService();
 //dapperExampleWithService.Read();
+
+var services = new ServiceCollection().AddSingleton<AdoDotNetExample>().BuildServiceProvider();
+ 
+var adoDotNetExample = services.GetRequiredService<AdoDotNetExample>();
+adoDotNetExample.Read();
 
 Console.ReadKey();
