@@ -1,0 +1,83 @@
+﻿@model HighChartLineChartModel
+@{
+    string _title = Model.Title;
+    string _subtitle = Model.SubTitle;
+    string _yAxis = Model.YAxis;
+    string _xAxis = Model.XAxis;
+    var _series = Model.Series;
+}
+
+<div id="container" style="width: 100%; height: 600px;"></div>
+
+@section scripts {
+    <script>
+
+        const _title = @Html.Raw(JsonConvert.SerializeObject(_title))
+        const _subtitle = @Html.Raw(JsonConvert.SerializeObject(_subtitle))
+        const _yAxis = @Html.Raw(JsonConvert.SerializeObject(_yAxis))
+        const _xAxis = @Html.Raw(JsonConvert.SerializeObject(_xAxis))
+        const _series = @Html.Raw(JsonConvert.SerializeObject(_series))
+
+            Highcharts.chart('container', {
+
+            title: {
+                text: _title,
+                align: 'left'
+            },
+
+            subtitle: {
+                text: _subtitle,
+                align: 'left'
+            },
+
+            yAxis: {
+                title: {
+                    text: _yAxis
+                }
+            },
+
+            xAxis: {
+                accessibility: {
+                    rangeDescription: _xAxis
+                }
+            },
+
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
+
+            plotOptions: {
+                series: {
+                    label: {
+                        connectorAllowed: false
+                    },
+                    pointStart: 2010
+                }
+            },
+
+            series: _series.map(s => ({
+                name: s.Name,
+                data: s.Data
+            })),
+
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }]
+            }
+
+        });
+
+    </script>
+}
